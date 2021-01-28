@@ -1,0 +1,46 @@
+* {
+	box-sizing: border-box;
+}
+html {
+	scroll-behavior: smooth;
+}
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: #e7e7e7;
+}
+p, h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+}
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+a, a:hover {
+	text-decoration: none;
+}
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+input[type="checkbox" i] {
+	margin: 0;
+}
+button, input, select {
+	outline: none;
+	width: 100%;
+}
+button {
+	margin: 0;
+	padding: 0;
+	border: none;
+	cursor: pointer;
+}
+.input-group {
+	width: 360px;
+	margin-bottom: 34px;
+}
