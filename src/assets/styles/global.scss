@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 * {
 	box-sizing: border-box;
 }
@@ -9,6 +11,7 @@ body {
 	margin: 0;
 	padding: 0;
 	background: #e7e7e7;
+	font-family: $font;
 }
 p, h1, h2, h3, h4, h5, h6 {
 	margin: 0;
@@ -30,6 +33,9 @@ img {
 input[type="checkbox" i] {
 	margin: 0;
 }
+input:-webkit-autofill {
+	box-shadow: 0 0 0 30px white inset;
+}
 button, input, select {
 	outline: none;
 	width: 100%;
@@ -40,8 +46,10 @@ button {
 	border: none;
 	cursor: pointer;
 }
+.form__link {
+	color: $dark-blue;
+}
 .input-group {
-	width: 400px;
 	margin-bottom: 34px;
 	position: relative;
 }
@@ -53,11 +61,32 @@ button {
 	font-weight: normal;
 	font-size: 14px;
 	line-height: 18px;
-	color: #FF7171;
+	color: $error-text;
+}
+.input__label {
+	display: block;
+	margin-bottom: 6px;
+	font-weight: 500;
+	color: $gray;
 }
 .field {
+	height: 52px;
 	padding: 15px 15px;
-	border: 1px solid #dbe2ea;
+	border: 1px solid $light-gray;
 	box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.04);
 	border-radius: 6px;
+	font-family: $font;
+	color: $black-text;
+	font-size: 16px;
+	line-height: 21px;
+
+	&::placeholder {
+		font-family: $font;
+		font-size: 16px;
+		line-height: 21px;
+		color: $light-blue-text;
+	}
+	&:focus {
+		border: 2px solid $dark-blue;
+	}
 }

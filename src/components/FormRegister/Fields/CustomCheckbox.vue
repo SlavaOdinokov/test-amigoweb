@@ -7,7 +7,11 @@
       v-model="check"
       @change="$emit('handleCheck', check)"
     />
-    <label for="check">Принимаю условия использования</label>
+    <label for="check">
+      Принимаю{{ "\xa0" }}
+      <a href="#" class="form__link">условия</a>
+      {{ "\xa0" }}использования
+    </label>
   </div>
 </template>
 
@@ -21,6 +25,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/global.scss";
+
 .input-group {
   display: flex;
   align-items: center;
@@ -40,16 +46,23 @@ label {
 }
 .custom-checkbox + label:before {
   content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 10px;
   display: inline-block;
   width: 22px;
   height: 22px;
-  border: 1px solid #dbe2ea;
+  border: 1px solid $light-gray;
+  box-sizing: border-box;
   box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.04);
   border-radius: 4px;
 }
 .custom-checkbox:checked + label:before {
-  background: #70aeff;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+  border: 2px solid $dark-blue;
+  background-image: url(/images/check.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 </style>

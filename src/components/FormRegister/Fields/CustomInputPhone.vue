@@ -1,6 +1,6 @@
 <template>
   <div class="input-group">
-    <span>Номер телефона</span>
+    <span class="input__label">Номер телефона</span>
     <input
       name="phone"
       type="text"

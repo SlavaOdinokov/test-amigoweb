@@ -1,6 +1,6 @@
 <template>
   <div class="input-group">
-    <span>Имя</span>
+    <span class="input__label">Имя</span>
     <input
       name="name"
       type="text"

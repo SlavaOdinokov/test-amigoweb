@@ -1,20 +1,11 @@
 <template>
   <div class="input-group">
-    <!-- <select
-      name="language"
-      v-model="selected"
-      @change="$emit('handleSelect', selected)"
-    >
-      <option selected disabled>Язык</option>
-      <option v-for="(option, index) in options" :key="index">
-        {{ option }}
-      </option>
-    </select> -->
-
     <div class="select">
+      <span class="input__label">Язык</span>
       <p
         @click="areOptionsVisible = !areOptionsVisible"
         class="select__name field"
+        :class="{ focus: areOptionsVisible, selected: selected !== 'Язык' }"
       >
         {{ selected }}
       </p>
@@ -23,7 +14,7 @@
           class="options-items"
           v-for="(option, index) in options"
           :key="index"
-          @click="clickSelect(option)"
+          @click="selectOption(option)"
         >
           {{ option }}
         </p>
@@ -35,14 +26,18 @@
 <script>
 export default {
   name: "CustomSelect",
+  props: {
+    selected: {
+      type: String,
+      default: ""
+    }
+  },
   data: () => ({
     areOptionsVisible: false,
-    selected: "Язык",
     options: ["Русский", "Английский", "Китайский", "Испанский"]
   }),
   methods: {
-    clickSelect(value) {
-      this.selected = value;
+    selectOption(value) {
       this.$emit("handleSelect", value);
     },
     hideSelect() {
@@ -59,6 +54,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/global.scss";
+
 .select {
   position: relative;
 
@@ -68,6 +65,9 @@ export default {
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+    font-size: 16px;
+    line-height: 21px;
+    color: $light-blue-text;
 
     &::after {
       content: url(/images/select-arrow.svg);
@@ -77,24 +77,33 @@ export default {
   }
 }
 .options {
+  padding: 12px 0;
   position: absolute;
   z-index: 2;
   background: #fff;
   width: 100%;
-  top: 56px;
+  top: 83px;
   left: 0;
-  border: 1px solid #dbe2ea;
+  border: 1px solid $light-gray;
   box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.04),
     0px 20px 20px rgba(44, 39, 56, 0.04);
   border-radius: 6px;
 }
 .options-items {
-  padding: 12px 15px;
+  padding: 11px 15px;
+  color: $gray;
   cursor: pointer;
   transition: 0.2s;
 
   &:hover {
-    background-color: #ebf4f8;
+    background-color: $light-gray-text;
   }
+}
+.focus {
+  color: $black-text;
+  border: 2px solid $dark-blue;
+}
+.selected {
+  color: $black-text;
 }
 </style>

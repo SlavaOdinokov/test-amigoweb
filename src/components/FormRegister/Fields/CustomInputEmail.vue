@@ -1,6 +1,6 @@
 <template>
   <div class="input-group">
-    <span>Email</span>
+    <span class="input__label">Email</span>
     <input
       name="email"
       type="text"
