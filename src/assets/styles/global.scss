@@ -43,4 +43,15 @@ button {
 .input-group {
 	width: 360px;
 	margin-bottom: 34px;
+	position: relative;
+}
+.helper-text {
+	position: absolute;
+	bottom: -26px;
+	left: 0;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 18px;
+	color: #FF7171;
 }

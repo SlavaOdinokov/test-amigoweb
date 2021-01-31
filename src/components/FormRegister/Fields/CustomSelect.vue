@@ -1,15 +1,14 @@
 <template>
   <div class="input-group">
     <select
-      name="lang"
+      name="language"
       v-model="selected"
       @change="$emit('handleSelect', selected)"
     >
-      <option disabled selected>Язык</option>
-      <option value="Русский">Русский</option>
-      <option value="Английский">Английский</option>
-      <option value="Китайский">Китайский</option>
-      <option value="Испанский">Испанский</option>
+      <option selected disabled>Язык</option>
+      <option v-for="(option, index) in options" :key="index">
+        {{ option }}
+      </option>
     </select>
   </div>
 </template>
@@ -18,7 +17,8 @@
 export default {
   name: "CustomSelect",
   data: () => ({
-    selected: ""
+    selected: "Язык",
+    options: ["Русский", "Английский", "Китайский", "Испанский"]
   })
 };
 </script>

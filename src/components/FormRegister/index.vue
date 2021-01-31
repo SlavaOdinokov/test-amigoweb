@@ -1,49 +1,78 @@
 <template>
-  <div class="form">
+  <form class="form" @submit.prevent="onSubmit" ref="form">
     <h3>Регистрация</h3>
     <div class="form__title-group">
       <span>Уже есть аккаунт? </span>
       <a href="!#">Войти</a>
     </div>
-    <div v-for="(field, index) in fields" :key="index">
-      <CustomInput :field="field" @handleInput="onInput" />
-    </div>
+    <CustomInputName @handleInputName="onInputName" />
+    <CustomInputEmail @handleInputEmail="onInputEmail" />
+    <CustomInputPhone @handleInputPhone="onInputPhone" />
     <CustomSelect @handleSelect="onSelected" />
-    <CustomCheckbox />
-    <CustomButton />
-  </div>
+    <CustomCheckbox @handleCheck="onCheck" />
+    <CustomButton :isDisabled="isDisabled" />
+  </form>
 </template>
 
 <script>
-import { fields } from "./setup";
-
 export default {
   name: "FormRegister",
   components: {
     CustomButton: () => import("./Fields/CustomButton"),
     CustomCheckbox: () => import("./Fields/CustomCheckbox"),
-    CustomInput: () => import("./Fields/CustomInput"),
+    CustomInputName: () => import("./Fields/CustomInputName"),
+    CustomInputEmail: () => import("./Fields/CustomInputEmail"),
+    CustomInputPhone: () => import("./Fields/CustomInputPhone"),
     CustomSelect: () => import("./Fields/CustomSelect")
   },
   data: () => ({
-    fields,
+    isDisabled: true,
     formData: {
       name: "",
       email: "",
       phone: "",
-      language: ""
+      language: "",
+      checked: false
     }
   }),
   methods: {
-    onInput(data) {
-      Object.keys(this.formData).forEach(item => {
-        if (item === data.label) {
-          this.formData[item] = data.value;
-        }
-      });
+    onInputName(value) {
+      this.formData.name = value;
+      this.validForm();
+    },
+    onInputEmail(value) {
+      this.formData.email = value;
+      this.validForm();
+    },
+    onInputPhone(value) {
+      this.formData.phone = value;
+      this.validForm();
     },
     onSelected(value) {
       this.formData.language = value;
+      this.validForm();
+    },
+    onCheck(value) {
+      this.formData.checked = value;
+      this.validForm();
+    },
+    validForm() {
+      const values = Object.values(this.formData);
+
+      for (let i = 0; i <= values.length; i++) {
+        if (values[i] === "" || values[i] === false) {
+          this.isDisabled = true;
+          return;
+        }
+      }
+
+      this.isDisabled = false;
+    },
+    onSubmit() {
+      console.log(this.formData);
+      this.$refs.form.reset();
+      this.isDisabled = true;
+      // console.log(this.$refs.email.$v.email.email);
     }
   }
 };

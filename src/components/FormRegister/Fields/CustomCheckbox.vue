@@ -1,9 +1,24 @@
 <template>
   <div class="input-group">
-    <input id="check" type="checkbox" class="custom-checkbox" />
+    <input
+      id="check"
+      type="checkbox"
+      class="custom-checkbox"
+      v-model="check"
+      @change="$emit('handleCheck', check)"
+    />
     <label for="check">Принимаю условия использования</label>
   </div>
 </template>
+
+<script>
+export default {
+  name: "CustomCheckbox",
+  data: () => ({
+    check: false
+  })
+};
+</script>
 
 <style lang="scss" scoped>
 .input-group {
