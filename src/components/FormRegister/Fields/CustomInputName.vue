@@ -7,6 +7,7 @@
       placeholder="Введите Ваше имя"
       v-model.trim="name"
       @blur="handleInputName"
+      class="field"
     />
     <small v-if="$v.name.$dirty && !$v.name.isName" class="helper-text">
       Введено не корректное значение

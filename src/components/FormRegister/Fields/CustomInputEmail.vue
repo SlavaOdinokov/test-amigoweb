@@ -7,6 +7,7 @@
       placeholder="Введите ваш email"
       v-model.trim="email"
       @blur="handleInputEmail"
+      class="field"
     />
     <small v-if="$v.email.$dirty && !$v.email.email" class="helper-text">
       Введено не корректное значение

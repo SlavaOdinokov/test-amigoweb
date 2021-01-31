@@ -7,6 +7,7 @@
       placeholder="Введите номер телефона"
       v-model.trim="phone"
       @blur="handleInputPhone"
+      class="field"
     />
     <small v-if="$v.phone.$dirty && !$v.phone.isPhone" class="helper-text">
       Введено не корректное значение
